@@ -49,7 +49,7 @@ if True:
     data = np.loadtxt(file_name)
 
     data_size = data.shape[0]
-    all_angpos = np.zeros((data_size,6))
+    all_angpos = np.zeros((data_size-1,6))
     pose_last =np.matrix(np.eye(4,4))
     pose =np.matrix(np.eye(4,4))
     pose_last[0:3,:] = np.matrix(data[0,:].reshape(3,4))
@@ -57,7 +57,7 @@ if True:
         pose[0:3,:] = np.matrix(data[i,:].reshape(3,4))
         motion = pose_last.I*pose
         angpos = mat2angpos(motion)
-        all_angpos[i,:] = angpos
+        all_angpos[i-1,:] = angpos
         pose_last = pose.copy()
         #print pose_line
     np.savetxt(sys.argv[2],all_angpos)
