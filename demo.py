@@ -22,4 +22,4 @@ for i in range(0,vo_path.shape[0]):
     cv2.circle(background_img,(500+int(scale*vo_path[i,3]),500-int(scale*vo_path[i,11])),1,(0,255,0),-1)
     background_img[0:image.shape[0],0:image.shape[1]] = image
     cv2.imshow('Demo KITTI 00',background_img)
-    cv2.waitKey(1)
+    cv2.waitKey(0)
